@@ -1,0 +1,32 @@
+{
+  "name": "openroom-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "c0d0g3n <c0d0g3n@gmail.com> (https://github.com/c0d0g3n)",
+  "license": "GPL-3.0+",
+  "scripts": {
+    "dev": "nodemon bin/dev"
+  },
+  "dependencies": {
+    "graphql": "^0.11.6",
+    "kcors": "^2.2.1",
+    "koa": "^2.3.0",
+    "koa-body": "^2.4.0",
+    "koa-router": "^7.2.1",
+    "koa-session": "^5.5.0",
+    "mongoose": "^4.11.13",
+    "mongoose-async": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "eslint": "^4.8.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}

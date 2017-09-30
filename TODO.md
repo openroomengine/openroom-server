@@ -1,0 +1,4 @@
+- setup graphql server
+- user crud
+- manage session using graphql
+- restrict graphiql access
