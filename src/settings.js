@@ -1,3 +1,5 @@
+import scrypt from 'scrypt'
+
 const settings = {
   cors: {
     origin: ['http://localhost:3000'],
@@ -9,6 +11,13 @@ const settings = {
     port: '27017',
   },
   dev: process.env.NODE_ENV !== 'production',
+  routes: {
+    graphql: '/graphql',
+    graphiql: '/graphiql',
+  },
+  scrypt: scrypt.paramsSync(
+    0.1, // maxtime
+  ),
   server: {
     name: 'Openroom Server',
     protocol: 'http',
