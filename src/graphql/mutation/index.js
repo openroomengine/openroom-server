@@ -5,8 +5,8 @@ import {
 import createSession from './session/create.js'
 import deleteSession from './session/delete.js'
 import createUser from './user/create.js'
-// import updateUser from './user/update.js'
-// import deleteUser from './user/delete.js'
+import updateUser from './user/update.js'
+import deleteUser from './user/delete.js'
 
 export default new GraphQLObjectType({
   name: 'Mutation',
@@ -17,7 +17,7 @@ export default new GraphQLObjectType({
     deleteSession, // logout
     // user
     createUser,
-    // updateUser,
-    // deleteUser,
+    updateUser,
+    deleteUser,
   },
 })

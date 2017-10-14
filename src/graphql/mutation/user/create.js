@@ -9,7 +9,7 @@ import User from '../../../mongoose/User.js'
 export default {
   type: UserType,
   args: {
-    name: {
+    username: {
       type: new GraphQLNonNull(GraphQLString),
     },
     password: {
@@ -19,7 +19,7 @@ export default {
   resolve: async (prev, args, ctx) => {
     // create user
     const user = await new User({
-      username: args.name,
+      username: args.username,
       password: args.password,
     }).save()
 
