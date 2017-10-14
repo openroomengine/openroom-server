@@ -4,6 +4,8 @@ import scrypt from 'scrypt'
 import settings from '../settings.js'
 import {Schema, connection} from '../mongoose'
 
+const auth = settings.authorization
+
 const userSchema = new Schema({
   username: {
     type: String,
@@ -26,6 +28,11 @@ const userSchema = new Schema({
       // store as base64
       return hash.toString('base64')
     },
+  },
+  role: {
+    type: String,
+    default: auth.defaultUserRole,
+    enum: Object.keys(auth.roles),
   },
 })
 

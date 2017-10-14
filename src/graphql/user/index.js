@@ -4,6 +4,7 @@ import {
 
 import id from './id.js'
 import username from './username.js'
+import role from './role.js'
 
 export default new GraphQLObjectType({
   name: 'User',
@@ -11,5 +12,6 @@ export default new GraphQLObjectType({
   fields: {
     id,
     username,
+    role,
   },
 })

@@ -1,2 +1,1 @@
-- manage session using graphql
-- restrict graphiql access
+- add access control to every branch

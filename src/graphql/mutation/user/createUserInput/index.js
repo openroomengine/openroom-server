@@ -7,7 +7,7 @@ import password from './password.js'
 import role from './role.js'
 
 export default new GraphQLInputObjectType({
-  name: 'UpdateUserInput',
+  name: 'CreateUserInput',
   fields: {
     username,
     password,

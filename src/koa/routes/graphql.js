@@ -13,7 +13,7 @@ export default graphqlKoa(ctx => {
   return {
     schema,
     rootValue: null,
-    context: {},
+    context: ctx,
     debug: settings.dev,
     formatError: (err) => {
       assert(err, 'Received null or undefined error.')

@@ -1,6 +1,15 @@
 import scrypt from 'scrypt'
 
 const settings = {
+  authorization: {
+    defaultUserRole: 'user',
+    defaultSessionRole: 'visitor',
+    roles: {
+      visitor: ['readRoom', 'createUser'],
+      user: ['readRoom', 'createUser', 'updateUserUsername:own', 'updateUserPassword:own', 'deleteUser:own'],
+      admin: ['readRoom', 'createUser', 'updateUserUsername', 'updateUserPassword', 'updateUserRole', 'deleteUser'],
+    },
+  },
   cors: {
     origin: ['http://localhost:3000'],
   },

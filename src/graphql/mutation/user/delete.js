@@ -5,6 +5,7 @@ import {
 } from 'graphql'
 
 import UserType from '../../user'
+
 import User from '../../../mongoose/User.js'
 
 export default {

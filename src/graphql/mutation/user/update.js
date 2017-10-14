@@ -6,7 +6,11 @@ import {
 
 import UserType from '../../user'
 import UpdateUserInputType from './updateUserInput'
+
 import User from '../../../mongoose/User.js'
+
+import isAuth from '../../../helpers/isAuth.js'
+import camelCase from '../../../helpers/camelCase.js'
 
 export default {
   type: UserType,
@@ -30,6 +34,10 @@ export default {
 
     // update user
     for (const field in input) {
+      console.log(camelCase('update', 'user', field), ctx, user.username)
+      // access control
+      isAuth(camelCase('update', 'user', field), ctx, user.username)
+
       user[field] = input[field]
     }
     await user.save()
