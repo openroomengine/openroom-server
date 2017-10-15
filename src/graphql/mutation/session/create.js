@@ -8,6 +8,8 @@ import {
 import createSessionPayloadType from './createSessionPayload'
 import User from '../../../mongoose/User.js'
 
+import isAuth from '../../../helpers/isAuth.js'
+
 const authError = 'Username and/or password are incorrect. Please try again.'
 
 export default {
@@ -26,6 +28,9 @@ export default {
 
     // cannot log in when already logged in
     assert(!ctx.session.user, 'You are already logged in.')
+
+    // access control
+    isAuth('createSession', ctx)
 
     // find user
     const user = await User.findOne(

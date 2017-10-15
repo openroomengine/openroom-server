@@ -32,8 +32,6 @@ export default (rules, {session}, subject = null) => {
 
     const limitation = grant.split(':')[1]
 
-    console.log(limitation, actor, subject)
-
     // unauthorized (not owning resource)
     if (
       limitation === 'own' &&

@@ -8,6 +8,8 @@ import UserType from '../../user'
 
 import User from '../../../mongoose/User.js'
 
+import isAuth from '../../../helpers/isAuth.js'
+
 export default {
   type: UserType,
   args: {
@@ -21,6 +23,9 @@ export default {
 
     // make sure user exists
     assert(user, `User with id "${args.id}" does not exist.`)
+
+    // access control
+    isAuth('deleteUser', ctx, user.username)
 
     // delete user
     await user.remove()
