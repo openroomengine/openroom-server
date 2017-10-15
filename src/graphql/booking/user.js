@@ -8,8 +8,8 @@ export default {
   type: GraphQLID,
   resolve: (booking, args, ctx) => {
     // access control
-    isAuth('readBookingId', ctx, booking.user)
+    isAuth('readBookingUser', ctx, booking.user)
 
-    return booking.id
+    return booking.user
   },
 }

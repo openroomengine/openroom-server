@@ -6,10 +6,10 @@ import isAuth from '../../helpers/isAuth.js'
 
 export default {
   type: GraphQLString,
-  resolve: (prev, args, ctx) => {
+  resolve: (user, args, ctx) => {
     // access control
-    isAuth('readUserRole', ctx)
+    isAuth('readUserRole', ctx, user.username)
 
-    return 'TODO'
+    return user.role
   },
 }

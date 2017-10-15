@@ -34,14 +34,12 @@ export default {
 
     // update user
     for (const field in input) {
-      console.log(camelCase('update', 'user', field), ctx, user.username)
       // access control
-      isAuth(camelCase('update', 'user', field), ctx, user.username)
+      isAuth(camelCase('update', 'user', field), ctx, user.id)
 
       user[field] = input[field]
     }
-    await user.save()
 
-    return 'TODO'
+    return user.save()
   },
 }

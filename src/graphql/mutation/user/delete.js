@@ -25,11 +25,9 @@ export default {
     assert(user, `User with id "${args.id}" does not exist.`)
 
     // access control
-    isAuth('deleteUser', ctx, user.username)
+    isAuth('deleteUser', ctx, user.id)
 
     // delete user
-    await user.remove()
-
-    return 'TODO'
+    return user.remove()
   },
 }

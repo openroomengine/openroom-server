@@ -6,10 +6,10 @@ import isAuth from '../../helpers/isAuth.js'
 
 export default {
   type: GraphQLID,
-  resolve: (prev, args, ctx) => {
+  resolve: (user, args, ctx) => {
     // access control
-    isAuth('readUserId', ctx)
+    isAuth('readUserId', ctx, user.username)
 
-    return 'TODO'
+    return user.id
   },
 }

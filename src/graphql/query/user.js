@@ -3,14 +3,16 @@ import {
   GraphQLID,
 } from 'graphql'
 
-import User from '../user'
+import UserType from '../user'
+
+import User from '../../mongoose/User.js'
 
 export default {
-  type: User,
+  type: UserType,
   args: {
     id: {
       type: new GraphQLNonNull(GraphQLID),
     },
   },
-  resolve: (prev, args, ctx) => 'TODO',
+  resolve: async (prev, args, ctx) => User.findById(args.id),
 }

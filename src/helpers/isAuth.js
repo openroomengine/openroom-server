@@ -14,7 +14,7 @@ export default (rules, {session}, subject = null) => {
   // logged in
   if (session.user) {
     role = session.user.role
-    actor = session.user.username
+    actor = session.user.id
   }
 
   // normalize rules

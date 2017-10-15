@@ -3,14 +3,16 @@ import {
   GraphQLID,
 } from 'graphql'
 
-import Booking from '../booking'
+import BookingType from '../booking'
+
+import Booking from '../../mongoose/Booking.js'
 
 export default {
-  type: Booking,
+  type: BookingType,
   args: {
     id: {
       type: new GraphQLNonNull(GraphQLID),
     },
   },
-  resolve: (prev, args, ctx) => 'TODO',
+  resolve: (prev, args, ctx) => Booking.findById(args.id),
 }

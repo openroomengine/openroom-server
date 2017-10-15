@@ -3,14 +3,16 @@ import {
   GraphQLID,
 } from 'graphql'
 
-import Room from '../room'
+import RoomType from '../room'
+
+import Room from '../../mongoose/Room.js'
 
 export default {
-  type: Room,
+  type: RoomType,
   args: {
     id: {
       type: new GraphQLNonNull(GraphQLID),
     },
   },
-  resolve: (prev, args, ctx) => 'TODO',
+  resolve: (prev, args, ctx) => Room.findById(args.id),
 }

@@ -30,8 +30,12 @@ export default {
       role,
     }).save()
 
-    console.log(user)
+    // HACK: initialize session (so mutation has permission to return data)
+    ctx.session.user = {
+      username: user.username,
+      role: user.role,
+    }
 
-    return 'TODO'
+    return user
   },
 }
