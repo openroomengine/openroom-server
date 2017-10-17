@@ -24,6 +24,6 @@ export default {
       user,
     }).save()
 
-    return booking
+    return {payload: booking}
   },
 }

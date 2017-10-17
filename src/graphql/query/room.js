@@ -14,5 +14,9 @@ export default {
       type: new GraphQLNonNull(GraphQLID),
     },
   },
-  resolve: (prev, args, ctx) => Room.findById(args.id),
+  resolve: async (prev, args, ctx) => {
+    const room = await Room.findById(args.id)
+
+    return {payload: room}
+  },
 }

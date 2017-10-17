@@ -27,12 +27,12 @@ export default {
     const {id, input} = args
 
     // find user
-    const user = await User.findById(id)
+    let user = await User.findById(id)
 
     // make sure user exists
     assert(user, `User with id "${id}" does not exist.`)
 
-    // update user
+    // modify user
     for (const field in input) {
       // access control
       isAuth(camelCase('update', 'user', field), ctx, user.id)
@@ -40,6 +40,9 @@ export default {
       user[field] = input[field]
     }
 
-    return user.save()
+    // save user
+    user = await user.save()
+
+    return {payload: user}
   },
 }

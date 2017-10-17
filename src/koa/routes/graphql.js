@@ -34,6 +34,9 @@ export default graphqlKoa(ctx => {
         // username taken
         if (err.path[0] === 'createUser') {
           message = `Username "${oErr.getOperation().username}" already exists. Please try another one.`
+        } else if (err.path[0] === 'updateUser') {
+          // oErr.getOperation apparently not present
+          message = 'Provided username already exists. Please try another one.'
         }
       }
 

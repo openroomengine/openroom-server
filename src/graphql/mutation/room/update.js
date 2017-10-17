@@ -27,20 +27,22 @@ export default {
     const {id, input} = args
 
     // find room
-    const room = await Room.findById(id)
+    let room = await Room.findById(id)
 
     // make sure room exists
     assert(room, `Room with id "${id}" does not exist.`)
 
-    // update room
+    // modify room
     for (const field in input) {
-      console.log(camelCase('update', 'room', field), ctx)
       // access control
       isAuth(camelCase('update', 'room', field), ctx)
 
       room[field] = input[field]
     }
 
-    return room.save()
+    // save room
+    room = await room.save()
+
+    return {payload: room}
   },
 }

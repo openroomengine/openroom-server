@@ -22,12 +22,14 @@ export default {
     isAuth('deleteRoom', ctx)
 
     // find room
-    const room = await Room.findById(args.id)
+    let room = await Room.findById(args.id)
 
     // make sure room exists
     assert(room, `Room with id "${args.id}" does not exist.`)
 
     // delete room
-    return room.remove()
+    room = await room.remove()
+
+    return {payload: room}
   },
 }

@@ -19,7 +19,7 @@ export default {
   },
   resolve: async (prev, args, ctx) => {
     // find user
-    const user = await User.findById(args.id)
+    let user = await User.findById(args.id)
 
     // make sure user exists
     assert(user, `User with id "${args.id}" does not exist.`)
@@ -28,6 +28,8 @@ export default {
     isAuth('deleteUser', ctx, user.id)
 
     // delete user
-    return user.remove()
+    user = await user.remove()
+
+    return {payload: user}
   },
 }

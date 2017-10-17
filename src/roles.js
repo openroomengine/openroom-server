@@ -3,14 +3,14 @@
 
 // read
 const readRoom = ['readRoomId', 'readRoomName', 'readRoomDescription']
-const readBooking = ['readBookingId']
-const readOwnBooking = ['readBookingId:own']
+const readBooking = ['readBookingId', 'readBookingUser']
+const readOwnBooking = ['readBookingId:own', 'readBookingUser:own']
 const readUser = ['readUserId', 'readUserUsername', 'readUserRole']
 const readOwnUser = ['readUserId:own', 'readUserUsername:own', 'readUserRole:own']
 
 // update
 const updateRoom = ['updateRoomName', 'updateRoomDescription']
-const updateBooking = []
+const updateBooking = ['updateBookingUser']
 const updateOwnUser = ['updateUserUsername:own', 'updateUserPassword:own']
 const updateUser = ['updateUserUsername', 'updateUserPassword', 'updateUserRole'] // for admins
 

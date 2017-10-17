@@ -22,12 +22,15 @@ export default {
     isAuth('deleteBooking', ctx)
 
     // find booking
-    const booking = await Booking.findById(args.id)
+    let booking = await Booking.findById(args.id)
 
     // make sure booking exists
     assert(booking, `Booking with id "${args.id}" does not exist.`)
 
+    // remove booking
+    booking = await booking.remove()
+
     // delete booking
-    return booking.remove()
+    return {payload: booking}
   },
 }

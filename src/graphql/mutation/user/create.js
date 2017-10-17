@@ -30,12 +30,12 @@ export default {
       role,
     }).save()
 
-    // HACK: initialize session (so mutation has permission to return data)
-    ctx.session.user = {
-      username: user.username,
-      role: user.role,
-    }
+    // // HACK: initialize session (so mutation has permission to return data)
+    // ctx.session.user = {
+    //   username: user.username,
+    //   role: user.role,
+    // }
 
-    return user
+    return {payload: user}
   },
 }

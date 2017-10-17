@@ -27,12 +27,12 @@ export default {
     const {id, input} = args
 
     // find booking
-    const booking = await Booking.findById(id)
+    let booking = await Booking.findById(id)
 
     // make sure booking exists
     assert(booking, `Booking with id "${id}" does not exist.`)
 
-    // update booking
+    // modify booking
     for (const field in input) {
       console.log(camelCase('update', 'booking', field), ctx)
       // access control
@@ -41,6 +41,9 @@ export default {
       booking[field] = input[field]
     }
 
-    return booking.save()
+    // save booking
+    booking = await booking.save()
+
+    return {payload: booking}
   },
 }
