@@ -15,6 +15,7 @@
     "koa-body": "^2.4.0",
     "koa-router": "^7.2.1",
     "koa-session": "^5.5.0",
+    "moment": "^2.19.1",
     "mongoose": "^4.11.13",
     "mongoose-async": "^1.0.1",
     "scrypt": "^6.0.3"

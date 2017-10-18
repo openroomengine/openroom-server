@@ -1,8 +1,11 @@
 import assert from 'assert'
 import scrypt from 'scrypt'
+import moment from 'moment'
 
 import settings from '../settings.js'
 import {Schema, connection} from '../mongoose'
+
+import Moment from './types/Moment.js'
 
 const auth = settings.authorization
 
@@ -33,6 +36,11 @@ const userSchema = new Schema({
     type: String,
     default: auth.defaultUserRole,
     enum: Object.keys(auth.roles),
+  },
+  createdAt: {
+    type: Moment,
+    default: moment.utc(),
+    index: true,
   },
 })
 

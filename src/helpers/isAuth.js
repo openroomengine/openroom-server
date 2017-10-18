@@ -19,6 +19,11 @@ export default (rules, {session}, subject = null) => {
     actor = session.user.id
   }
 
+  // normalize subject
+  if (subject && subject.constructor.name === 'ObjectID') {
+    subject = subject.toString()
+  }
+
   // normalize rules
   if (typeof rules === 'string') rules = [rules]
 

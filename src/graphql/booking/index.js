@@ -4,6 +4,7 @@ import {
 
 import id from './id.js'
 import user from './user.js'
+import createdAt from './createdAt.js'
 
 export default new GraphQLObjectType({
   name: 'Booking',
@@ -11,5 +12,6 @@ export default new GraphQLObjectType({
   fields: {
     id,
     user,
+    createdAt,
   },
 })

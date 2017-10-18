@@ -1,15 +1,13 @@
-import {
-  GraphQLID,
-} from 'graphql'
+import MomentType from '../Moment.js'
 
 import isAuth from '../../helpers/isAuth.js'
 
 export default {
-  type: GraphQLID,
+  type: MomentType,
   resolve: ({payload: booking}, args, ctx) => {
     // access control
-    isAuth('readBookingId', ctx, booking.user)
+    isAuth('readBookingCreatedAt', ctx, booking.user)
 
-    return booking.id
+    return booking.createdAt
   },
 }

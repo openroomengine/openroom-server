@@ -2,26 +2,33 @@ import {
   GraphQLList,
   GraphQLID,
   GraphQLInt,
-  GraphQLString,
 } from 'graphql'
 
-import Room from '../room'
+import RoomType from '../room'
+
+import Room from '../../mongoose/Room.js'
 
 export default {
-  type: new GraphQLList(Room),
+  type: new GraphQLList(RoomType),
   args: {
-    ids: {
-      type: new GraphQLList(GraphQLID),
-    },
-    sort: {
-      type: new GraphQLList(GraphQLString),
-    },
     after: {
-      type: GraphQLID, // null means start from beginning
+      type: GraphQLID,
+      defaultValue: null, // start from beginning
     },
     count: {
       type: GraphQLInt,
+      defaultValue: 10,
     },
   },
-  resolve: (prev, args, ctx) => ['TODO'],
+  resolve: async (prev, args, ctx) => {
+    const {after, count} = args
+
+    const condition = after ? {_id: {$lt: after}} : {}
+
+    const rooms = await Room
+      .find(condition)
+      .limit(count)
+
+    console.log(after, count, rooms)
+  },
 }

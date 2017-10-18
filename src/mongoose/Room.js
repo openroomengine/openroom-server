@@ -12,6 +12,11 @@ const roomSchema = new Schema({
     type: String,
     required: true,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    index: true,
+  },
 })
 
 export default connection.model('Room', roomSchema)

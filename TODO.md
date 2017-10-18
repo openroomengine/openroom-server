@@ -1,6 +1,7 @@
 # Todo
 ## Currently
 - plural queries
+- graphql createdOn
 
 ## Long term
 - isAuth signature not scalable: consider rewrite if limitations keep increasing
@@ -14,3 +15,4 @@
 # Conventions
 - place `isAuth` as high in the resolver as possible (first or after receiving user info from db)
 - namespace `prev` argument
+- variables containing moment objects start with `$`
