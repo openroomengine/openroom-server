@@ -17,8 +17,8 @@ const updateUser = ['updateUserUsername', 'updateUserPassword', 'updateUserRole'
 // delete
 
 // ROLES
-const visitor = ['createSession', 'createUser', ...readRoom]
+const visitor = ['createSession', 'createUserUser', ...readRoom]
 const user = ['createBooking', ...readRoom, ...readOwnBooking, ...readOwnUser, ...updateOwnUser, 'deleteUser:own', 'deleteSession']
-const admin = ['createRoom', 'createBooking', 'createUser', ...readRoom, ...readBooking, ...readUser, ...updateRoom, ...updateBooking, ...updateUser, 'deleteRoom', 'deleteBooking', 'deleteUser', 'deleteSession']
+const admin = ['createRoom', 'createBooking', 'createUserUser', 'createUserAdmin', ...readRoom, ...readBooking, ...readUser, ...updateRoom, ...updateBooking, ...updateUser, 'deleteRoom', 'deleteBooking', 'deleteUser', 'deleteSession']
 
 export default {visitor, user, admin}

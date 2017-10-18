@@ -34,7 +34,6 @@ export default {
 
     // modify booking
     for (const field in input) {
-      console.log(camelCase('update', 'booking', field), ctx)
       // access control
       isAuth(camelCase('update', 'booking', field), ctx)
 

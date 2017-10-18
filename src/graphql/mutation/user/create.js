@@ -2,12 +2,17 @@ import {
   GraphQLNonNull,
 } from 'graphql'
 
+import settings from '../../../settings.js'
+
 import UserType from '../../user'
 import CreateUserInputType from './createUserInput'
 
 import User from '../../../mongoose/User.js'
 
 import isAuth from '../../../helpers/isAuth.js'
+import camelCase from '../../../helpers/camelCase.js'
+
+const auth = settings.authorization
 
 export default {
   type: UserType,
@@ -17,11 +22,12 @@ export default {
     },
   },
   resolve: async (prev, args, ctx) => {
-    // access control
-    isAuth('createUser', ctx)
-
     // shortcuts
-    const {username, password, role} = args.input
+    const {username, password} = args.input
+    const role = args.input.role || auth.defaultUserRole
+
+    // access control
+    isAuth(camelCase('create', 'user', role), ctx)
 
     // create user
     const user = await new User({
@@ -30,12 +36,9 @@ export default {
       role,
     }).save()
 
-    // // HACK: initialize session (so mutation has permission to return data)
-    // ctx.session.user = {
-    //   username: user.username,
-    //   role: user.role,
-    // }
-
-    return {payload: user}
+    return {
+      payload: user,
+      afterCreate: true,
+    }
   },
 }

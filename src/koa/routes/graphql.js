@@ -31,12 +31,20 @@ export default graphqlKoa(ctx => {
 
       // Mongodb: duplicate key error
       if (oErr && oErr.name === 'MongoError' && oErr.code === 11000) {
-        // username taken
         if (err.path[0] === 'createUser') {
+          // username taken (create)
           message = `Username "${oErr.getOperation().username}" already exists. Please try another one.`
         } else if (err.path[0] === 'updateUser') {
+          // username taken (update)
           // oErr.getOperation apparently not present
           message = 'Provided username already exists. Please try another one.'
+        } else if (err.path[0] === 'createRoom') {
+          // room name taken (create)
+          message = `Room "${oErr.getOperation().name}" already exists. Please choose another name.`
+        } else if (err.path[0] === 'updateRoom') {
+          // room name taken (update)
+          // oErr.getOperation apparently not present
+          message = 'Room with provided name already exists. Please choose another name.'
         }
       }
 
