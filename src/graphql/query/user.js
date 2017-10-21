@@ -1,3 +1,4 @@
+import assert from 'assert'
 import {
   GraphQLNonNull,
   GraphQLID,
@@ -15,7 +16,11 @@ export default {
     },
   },
   resolve: async (prev, args, ctx) => {
+    // get user
     const user = await User.findById(args.id)
+
+    // make sure user exists
+    assert(user, `User with id "${args.id}" does not exist.`)
 
     return {payload: user}
   },

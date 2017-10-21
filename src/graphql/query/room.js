@@ -1,3 +1,4 @@
+import assert from 'assert'
 import {
   GraphQLNonNull,
   GraphQLID,
@@ -15,7 +16,11 @@ export default {
     },
   },
   resolve: async (prev, args, ctx) => {
+    // get room
     const room = await Room.findById(args.id)
+
+    // make sure room exists
+    assert(room, `Room with id "${args.id}" does not exist.`)
 
     return {payload: room}
   },

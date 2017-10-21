@@ -23,12 +23,17 @@ export default {
   resolve: async (prev, args, ctx) => {
     const {after, count} = args
 
-    const condition = after ? {_id: {$lt: after}} : {}
+    // cursor
+    const condition = after ? {_id: {$gt: after}} : {}
 
-    const rooms = await Room
+    // get rooms
+    let rooms = await Room
       .find(condition)
       .limit(count)
 
-    console.log(after, count, rooms)
+    // namespace
+    rooms = rooms.map(room => ({payload: room}))
+
+    return rooms
   },
 }

@@ -1,7 +1,5 @@
 # Todo
 ## Currently
-- plural queries
-- graphql createdOn
 
 ## Long term
 - isAuth signature not scalable: consider rewrite if limitations keep increasing

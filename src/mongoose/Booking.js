@@ -2,7 +2,8 @@ import moment from 'moment'
 
 import {Schema, connection} from '../mongoose'
 
-import invalid from '../errors/invalidDate.js'
+import toMoment from '../helpers/toMoment.js'
+import toDate from '../helpers/toDate.js'
 
 const bookingSchema = new Schema({
   user: {
@@ -14,23 +15,8 @@ const bookingSchema = new Schema({
     type: Date,
     default: Date.now,
     index: true,
-    get: function (date) {
-      // convert to moment
-      const $date = moment.utc(date)
-
-      // make sure moment is valid
-      if (!$date.isValid()) throw invalid($date.input)
-
-      // moment to resolver
-      return $date
-    },
-    set: function ($date) {
-      // make sure moment is valid
-      if (!$date.isValid()) throw invalid($date.input)
-
-      // js timestamp to db
-      return $date.toDate()
-    },
+    get: toMoment,
+    set: toDate,
   },
 })
 

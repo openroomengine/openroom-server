@@ -8,6 +8,8 @@ export default {
     // access control
     isAuth('readUserCreatedAt', ctx, user.id)
 
+    console.log(user.createdAt)
+
     return user.createdAt
   },
 }

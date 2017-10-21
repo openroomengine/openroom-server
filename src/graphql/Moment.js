@@ -30,7 +30,10 @@ export default new GraphQLScalarType({
   },
   parseLiteral: (ast) => { // read from graphql
     // shortcut
-    const date = ast.value
+    let date = ast.value
+
+    // turn string into int
+    if (ast.kind === 'IntValue') date = parseInt(date, 10)
 
     // convert to moment
     const $date = moment.utc(date)

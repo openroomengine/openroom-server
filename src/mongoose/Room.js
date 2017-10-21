@@ -1,5 +1,8 @@
 import {Schema, connection} from '../mongoose'
 
+import toMoment from '../helpers/toMoment.js'
+import toDate from '../helpers/toDate.js'
+
 const roomSchema = new Schema({
   name: {
     type: String,
@@ -16,6 +19,8 @@ const roomSchema = new Schema({
     type: Date,
     default: Date.now,
     index: true,
+    get: toMoment,
+    set: toDate,
   },
 })
 
