@@ -1,5 +1,6 @@
 # Todo
 ## Currently
+- count fields?
 
 ## Long term
 - isAuth signature not scalable: consider rewrite if limitations keep increasing
