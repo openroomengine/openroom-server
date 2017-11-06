@@ -50,7 +50,7 @@ export default {
     // make sure password is correct
     assert(verified, authError)
 
-    // instantiate session (DO NOT STORE PRIVATE INFO, SESSION CONTENT IS PUBLIC)
+    // instantiate session
     ctx.session.user = {
       id: user.id,
       username: user.username,

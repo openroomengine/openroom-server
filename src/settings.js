@@ -5,7 +5,7 @@ import roles from './roles.js'
 const settings = {
   authorization: {
     defaultUserRole: 'user',
-    defaultSessionRole: 'visitor',
+    defaultSessionRole: 'visitor', // role of logged out users
     roles,
   },
   cors: {
