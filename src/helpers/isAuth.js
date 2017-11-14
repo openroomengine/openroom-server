@@ -30,6 +30,9 @@ export default (rules, {session}, subject = null) => {
   // granted permissions
   const grants = roles[role]
 
+  // make sure role exists
+  if (!grants) throw new Error(`Role "${role}" does not exist.`)
+
   // verify every rule
   for (const rule of rules) {
     // find grant with first part that matches rule
